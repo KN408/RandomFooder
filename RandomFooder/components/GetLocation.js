@@ -50,6 +50,7 @@ class GetLocation extends React.Component {
         <GetRandomPlace
           latitude={this.state.latitude}
           longitude={this.state.longitude}
+          grabInfo={this.props.grabInfo}
         />
       </View>
     );

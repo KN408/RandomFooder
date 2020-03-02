@@ -3,7 +3,6 @@ import { View, Text, StyleSheet, TouchableOpacity, Alert } from 'react-native';
 import Geolocation from '@react-native-community/geolocation';
 import { yelp } from '../Private/key.js';
 import axios from 'axios';
-import Icon from 'react-native-vector-icons';
 
 Geolocation.setRNConfiguration({
   skipPermissionRequests: false,
@@ -19,30 +18,44 @@ class GetRandomPlace extends React.Component {
     };
   }
 
+  sendInfo = (obj) => {
+    this.props.grabInfo(obj);
+  }
+
+  getRandomNumber = () => {
+    let number = Math.floor(Math.random() * 10);
+    return number;
+  }
+
   findPlaceToEat = () => {
     axios
       .get('https://api.yelp.com/v3/businesses/search', {
         params: {
-          term: 'drinks',
+          term: 'food',
           latitude: this.props.latitude,
           longitude: this.props.longitude,
-          limit: 1,
+          limit: 11,
         },
         headers: {
           Authorization: 'Bearer ' + yelp,
         },
       })
       .then(response => {
-        console.log(
-          'name: ', response.data.businesses[0].name,
-          'imageUrl: ', response.data.businesses[0].image_url,
-          'url', response.data.businesses[0].url,
-          'coordinates', response.data.businesses[0].coordinates,
-          'price:', response.data.businesses[0].price,
-          'location', response.data.businesses[0].location);
-        this.setState({
-          places: response.data.businesses[0],
-        });
+        let random = this.getRandomNumber();
+        let result = {
+          name: response.data.businesses[random].name,
+          imageUrl: response.data.businesses[random].image_url,
+          url: response.data.businesses[random].url,
+          coordinates: response.data.businesses[random].coordinates,
+          price: response.data.businesses[random].price,
+          address: response.data.businesses[random].location.address1,
+          city: response.data.businesses[random].location.city,
+          state: response.data.businesses[random].location.state,
+          zip_code: response.data.businesses[random].location.zip_code,
+          category: response.data.businesses[random].categories[0].title,
+          rating: response.data.businesses[random].rating,
+        };
+        this.sendInfo(result);
       })
       .catch(error => {
         console.log(error);
@@ -52,9 +65,11 @@ class GetRandomPlace extends React.Component {
 
   render() {
     return (
-      <TouchableOpacity style={styles.button} onPress={this.findPlaceToEat}>
-        <Text style={styles.text}>Give me a place to eat!</Text>
-      </TouchableOpacity>
+      <View style={styles.container}>
+        <TouchableOpacity style={styles.button} onPress={this.findPlaceToEat}>
+          <Text style={styles.text}>Give me a place to eat!</Text>
+        </TouchableOpacity>
+      </View>
     );
   }
 }
@@ -67,11 +82,17 @@ const styles = StyleSheet.create({
     backgroundColor: '#6A8D92',
     alignItems: 'center',
     justifyContent: 'center',
+    alignContent: 'center',
   },
   text: {
     color: 'white',
     fontSize: 20,
     textAlign: 'center',
+  },
+  container: {
+    flex: 1,
+    paddingTop: 15,
+    backgroundColor: 'pink',
   },
 });
 

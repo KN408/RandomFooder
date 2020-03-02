@@ -7,14 +7,25 @@ import Display from './components/Display.js';
 class App extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      grabbedInfo: {},
+      called: false,
+    };
   }
+
+  grabInfo = (obj) => {
+    this.setState({
+      grabbedInfo: obj,
+    });
+  };
 
   render() {
     return (
       <View style={styles.container}>
         <Header style={styles.header} />
-        <Display style={styles.body} />
-        <GetLocation style={styles.footer} />
+        <Display style={styles.body} info={this.state.grabbedInfo} />
+        <GetLocation style={styles.footer} grabInfo={this.grabInfo} />
       </View>
     );
   }
