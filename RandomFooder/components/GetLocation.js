@@ -13,8 +13,8 @@ class GetLocation extends React.Component {
     super(props);
 
     this.state = {
-      latitude: '0',
-      longitude: '0',
+      latitude: null,
+      longitude: null,
       places: [],
     };
   }

@@ -1,5 +1,8 @@
 import React from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
+
+Icon.loadFont();
 
 class Display extends React.Component {
   constructor(props) {
@@ -25,11 +28,18 @@ class Display extends React.Component {
       <View style={styles.container}>
         <View style={styles.imageContainer}>
           <Image style={styles.image} source={{ uri: url }} />
-          <Text style={styles.title}>{name}</Text>
+          <View style={styles.titleContainer}>
+            <Icon name="heart" size={25} color="red" />
+            <Text style={styles.title}>{name}</Text>
+            <Icon name="map" size={25} color="green" />
+          </View>
         </View>
         <View style={styles.infoBlock}>
           <Text>{info.price}</Text>
-          <Text>{info.rating}</Text>
+          <Text>
+            <Text>{info.rating} </Text>
+            <Icon name="star" size={18} color="#F3DE2C" />
+          </Text>
           <Text>{info.category}</Text>
           <Text>{info.address}</Text>
           <Text>{info.city}</Text>
@@ -70,7 +80,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   title: {
-    fontSize: 30,
+    fontSize: 35,
+  },
+  titleContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    backgroundColor: 'grey',
+    width: '100%',
   },
 });
 
