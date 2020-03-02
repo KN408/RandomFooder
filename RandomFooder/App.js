@@ -12,9 +12,9 @@ class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Header />
-        <Display />
-        <GetLocation />
+        <Header style={styles.header} />
+        <Display style={styles.body} />
+        <GetLocation style={styles.footer} />
       </View>
     );
   }
@@ -22,6 +22,17 @@ class App extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
+  },
+  header: {
+    flex: 1,
+  },
+  body: {
+    flex: 3,
+    justifyContent: 'center',
+    alignContent: 'center',
+  },
+  footer: {
     flex: 1,
   },
 });

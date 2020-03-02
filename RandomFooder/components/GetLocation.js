@@ -46,7 +46,7 @@ class GetLocation extends React.Component {
 
   render() {
     return (
-      <View style={styles.container}>
+      <View style={styles.button}>
         <GetRandomPlace
           latitude={this.state.latitude}
           longitude={this.state.longitude}
@@ -57,12 +57,12 @@ class GetLocation extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  container: {
+  button: {
     flex: 1,
     backgroundColor: 'white',
-    justifyContent: 'flex-end',
-    paddingBottom: 60,
     alignItems: 'center',
+    justifyContent: 'center',
+    paddingBottom: 10,
   },
 });
 

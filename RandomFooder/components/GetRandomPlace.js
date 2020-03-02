@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity, Alert } from 'react-native';
 import Geolocation from '@react-native-community/geolocation';
 import { yelp } from '../Private/key.js';
 import axios from 'axios';
+import Icon from 'react-native-vector-icons';
 
 Geolocation.setRNConfiguration({
   skipPermissionRequests: false,
