@@ -59,11 +59,9 @@ class GetLocation extends React.Component {
 
 const styles = StyleSheet.create({
   button: {
-    flex: 1,
-    backgroundColor: 'white',
+    flex: 0.75,
     alignItems: 'center',
     justifyContent: 'center',
-    paddingBottom: 10,
   },
 });
 

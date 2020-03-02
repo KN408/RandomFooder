@@ -3,6 +3,7 @@ import { View, Text, StyleSheet } from 'react-native';
 import Header from './components/Header.js';
 import GetLocation from './components/GetLocation.js';
 import Display from './components/Display.js';
+import Footer from './components/Footer.js';
 
 class App extends React.Component {
   constructor(props) {
@@ -25,7 +26,8 @@ class App extends React.Component {
       <View style={styles.container}>
         <Header style={styles.header} />
         <Display style={styles.body} info={this.state.grabbedInfo} />
-        <GetLocation style={styles.footer} grabInfo={this.grabInfo} />
+        <GetLocation style={styles.randomButton} grabInfo={this.grabInfo} />
+        <Footer style={styles.footer} />
       </View>
     );
   }
@@ -39,9 +41,12 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   body: {
-    flex: 3,
+    flex: 2,
     justifyContent: 'center',
     alignContent: 'center',
+  },
+  randomButton: {
+    flex: 1,
   },
   footer: {
     flex: 1,

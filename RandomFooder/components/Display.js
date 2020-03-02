@@ -29,9 +29,9 @@ class Display extends React.Component {
         <View style={styles.imageContainer}>
           <Image style={styles.image} source={{ uri: url }} />
           <View style={styles.titleContainer}>
-            <Icon name="heart" size={25} color="red" />
+            <Icon style={styles.leftIcon} name="bars" size={27} color="black" />
             <Text style={styles.title}>{name}</Text>
-            <Icon name="map" size={25} color="green" />
+            <Icon style={styles.rightIcon} name="share-square" size={30} color="black" />
           </View>
         </View>
         <View style={styles.infoBlock}>
@@ -69,6 +69,9 @@ const styles = StyleSheet.create({
     backgroundColor: 'skyblue',
     alignItems: 'center',
     justifyContent: 'space-evenly',
+    borderColor: 'white',
+    borderBottomColor: 'black',
+    borderWidth: 2,
   },
   image: {
     height: 300,
@@ -76,7 +79,7 @@ const styles = StyleSheet.create({
   },
   infoBlock: {
     flex: 1.5,
-    backgroundColor: 'green',
+    backgroundColor: 'lightyellow',
     alignItems: 'center',
   },
   title: {
@@ -86,8 +89,13 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    backgroundColor: 'grey',
     width: '100%',
+  },
+  leftIcon: {
+    paddingLeft: 15,
+  },
+  rightIcon: {
+    paddingRight: 15,
   },
 });
 
