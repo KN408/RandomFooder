@@ -14,7 +14,7 @@ class GetRandomPlace extends React.Component {
     super(props);
 
     this.state = {
-      places: [],
+      searchTerm: 'food',
     };
   }
 
@@ -31,7 +31,7 @@ class GetRandomPlace extends React.Component {
     axios
       .get('https://api.yelp.com/v3/businesses/search', {
         params: {
-          term: 'food',
+          term: this.state.searchTerm,
           latitude: this.props.latitude,
           longitude: this.props.longitude,
           limit: 11,
@@ -54,6 +54,8 @@ class GetRandomPlace extends React.Component {
           zip_code: response.data.businesses[random].location.zip_code,
           category: response.data.businesses[random].categories[0].title,
           rating: response.data.businesses[random].rating,
+          distance: response.data.businesses[random].distance,
+          id: response.data.businesses[random].id,
         };
         this.sendInfo(result);
       })
@@ -92,7 +94,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    backgroundColor: 'blue',
+    backgroundColor: 'white',
   },
 });
 

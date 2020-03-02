@@ -11,7 +11,7 @@ class App extends React.Component {
 
     this.state = {
       grabbedInfo: {},
-      called: false,
+      searchTerm: 'food',
     };
   }
 
@@ -26,7 +26,7 @@ class App extends React.Component {
       <View style={styles.container}>
         <Header style={styles.header} />
         <Display style={styles.body} info={this.state.grabbedInfo} />
-        <GetLocation style={styles.randomButton} grabInfo={this.grabInfo} />
+        <GetLocation style={styles.randomButton} searchTerm={this.state.searchTerm} grabInfo={this.grabInfo} />
         <Footer style={styles.footer} />
       </View>
     );

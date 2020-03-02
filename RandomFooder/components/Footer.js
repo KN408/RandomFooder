@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import ModalTest from './Modal.js';
+import FilterModal from './modals/FilterModal.js';
 
 Icon.loadFont();
 
@@ -14,7 +14,7 @@ class Footer extends React.Component {
     return (
       <View style={styles.footer}>
         <View style={styles.iconBox}>
-          <ModalTest />
+          <FilterModal />
         </View>
         <View style={styles.iconBox}>
           <Icon name="heart" size={35} color="white" />

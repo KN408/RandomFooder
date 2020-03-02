@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
-import { Modal, Text, TouchableHighlight, View, Alert, StyleSheet } from 'react-native';
+import { Modal, Picker, TouchableHighlight, View, Alert, StyleSheet } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 Icon.loadFont();
 
-class ModalTest extends Component {
+class FilterModal extends Component {
   state = {
     modalVisible: false,
+    typeFilter: 'food',
   };
 
   setModalVisible(visible) {
@@ -18,7 +19,8 @@ class ModalTest extends Component {
       <View>
         <Modal
           animationType="slide"
-          transparent={false}
+          style={styles.modalStyle}
+          transparent={ true }
           visible={this.state.modalVisible}
           onRequestClose={() => {
             Alert.alert('Modal has been closed.');
@@ -31,6 +33,17 @@ class ModalTest extends Component {
                 }}>
                 <Icon name="times-circle" size={35} color="black" />
               </TouchableHighlight>
+              <Picker
+                selectedValue={this.state.language}
+                style={{height: 50, width: 100}}
+                onValueChange={(itemValue, itemIndex) =>
+                  this.setState({ typeFilter: itemValue })
+                }>
+                <Picker.Item label="Any Food" value="food" />
+                <Picker.Item label="Any Drinks" value="japanese" />
+                <Picker.Item label="Milk Tea" value="japanese" />
+                <Picker.Item label="Japanese" value="japanese" />
+              </Picker>
             </View>
           </View>
         </Modal>
@@ -56,6 +69,12 @@ const styles = StyleSheet.create({
   edit: {
     backgroundColor: 'blue',
   },
+  modalStyle: {
+    margin: 0,
+    height: 100,
+    width: 100,
+    backgroundColor: 'green',
+  },
 });
 
-export default ModalTest;
+export default FilterModal;

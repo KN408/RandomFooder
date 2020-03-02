@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import PictureModal from './modals/PictureModal.js';
 
 Icon.loadFont();
 
@@ -9,6 +10,7 @@ class Display extends React.Component {
     super(props);
     this.state = {
       uri: 'https://via.placeholder.com/250',
+      photos: [],
     };
   }
 
@@ -16,6 +18,7 @@ class Display extends React.Component {
     let info = this.props.info;
     let url;
     let name = '';
+    let icon;
 
     if (info.imageUrl === undefined) {
       url = this.state.uri;
@@ -24,35 +27,37 @@ class Display extends React.Component {
       name = info.name;
     }
 
+    if (info.rating === undefined) {
+      icon = <Icon name="star" size={20} color="white" />;
+    } else {
+      icon = <Icon name="star" size={20} color="#F3DE2C" />;
+    }
+
     return (
       <View style={styles.container}>
         <View style={styles.imageContainer}>
           <Image style={styles.image} source={{ uri: url }} />
           <View style={styles.titleContainer}>
-            <Icon style={styles.leftIcon} name="bars" size={27} color="black" />
+            <PictureModal id={info.id} />
             <Text style={styles.title}>{name}</Text>
             <Icon style={styles.rightIcon} name="share-square" size={30} color="black" />
           </View>
         </View>
         <View style={styles.infoBlock}>
-          <Text>{info.price}</Text>
-          <Text>
-            <Text>{info.rating} </Text>
-            <Icon name="star" size={18} color="#F3DE2C" />
-          </Text>
-          <Text>{info.category}</Text>
-          <Text>{info.address}</Text>
-          <Text>{info.city}</Text>
-          <Text>{info.state}</Text>
-          <Text>{info.zip_code}</Text>
-          {/* <Text>
-            {info.price}
-            {info.category}
-            {info.address}
-            {info.city}
-            {info.state}
-            {info.zip_code}
-          </Text> */}
+          <View style={styles.categoryView}>
+            <Text style={styles.categoryText}>{info.category}</Text>
+          </View>
+          <View style={styles.priceStarView}>
+            <Text style={styles.priceStarText}>{info.price}</Text>
+            <Text>
+              <Text style={styles.priceStarText}>{info.rating} </Text>
+              {icon}
+            </Text>
+          </View>
+          <View style={styles.addressView}>
+            <Text style={styles.addressText}>{info.address}, {info.city}</Text>
+            <Text style={styles.addressText}>{info.state} {info.zip_code}</Text>
+          </View>
         </View>
       </View>
     );
@@ -66,7 +71,7 @@ const styles = StyleSheet.create({
   },
   imageContainer: {
     flex: 2.5,
-    backgroundColor: 'skyblue',
+    backgroundColor: 'white',
     alignItems: 'center',
     justifyContent: 'space-evenly',
     borderColor: 'white',
@@ -79,11 +84,12 @@ const styles = StyleSheet.create({
   },
   infoBlock: {
     flex: 1.5,
-    backgroundColor: 'lightyellow',
-    alignItems: 'center',
+    backgroundColor: 'white',
   },
   title: {
-    fontSize: 35,
+    fontSize: 34,
+    textAlign: 'center',
+    fontWeight: '400',
   },
   titleContainer: {
     flexDirection: 'row',
@@ -92,10 +98,41 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   leftIcon: {
-    paddingLeft: 15,
+    paddingLeft: 20,
   },
   rightIcon: {
     paddingRight: 15,
+  },
+  priceStarView: {
+    flex: 0.15,
+    flexDirection: 'row',
+    backgroundColor: 'white',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  priceStarText: {
+    fontSize: 20,
+    margin: 5,
+  },
+  categoryView: {
+    flex: 0.2,
+    backgroundColor: 'white',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  categoryText: {
+    fontSize: 24,
+    textAlign: 'center',
+    fontStyle: 'italic',
+  },
+  addressView: {
+    flex: 0.3,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'white',
+  },
+  addressText: {
+    fontSize: 18,
   },
 });
 
