@@ -12,8 +12,15 @@ class App extends React.Component {
     this.state = {
       grabbedInfo: {},
       searchTerm: 'food',
+      userLocation: '',
     };
   }
+
+  grabUserLocation = (str) => {
+    this.setState({
+      userLocation: str,
+    });
+  };
 
   grabInfo = (obj) => {
     this.setState({
@@ -26,8 +33,17 @@ class App extends React.Component {
       <View style={styles.container}>
         <Header style={styles.header} />
         <Display style={styles.body} info={this.state.grabbedInfo} />
-        <GetLocation style={styles.randomButton} searchTerm={this.state.searchTerm} grabInfo={this.grabInfo} />
-        <Footer style={styles.footer} />
+        <GetLocation
+          style={styles.randomButton}
+          searchTerm={this.state.searchTerm}
+          grabInfo={this.grabInfo}
+          grabUserLocation={this.grabUserLocation}
+        />
+        <Footer
+          eatLocation={this.state.grabbedInfo.locationStr}
+          style={styles.footer}
+          userLocation={this.state.userLocation}
+        />
       </View>
     );
   }

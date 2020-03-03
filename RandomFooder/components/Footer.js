@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import FilterModal from './modals/FilterModal.js';
+import MapModal from './modals/MapModal.js';
 
 Icon.loadFont();
 
@@ -26,7 +27,10 @@ class Footer extends React.Component {
           <Icon name="save" size={35} color="white" />
         </View>
         <View style={styles.iconBox}>
-          <Icon name="map" size={35} color="white" />
+          <MapModal
+            eatLocation={this.props.eatLocation}
+            userLocation={this.props.userLocation}
+          />
         </View>
       </View>
     );

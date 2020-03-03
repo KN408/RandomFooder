@@ -18,6 +18,11 @@ class GetLocation extends React.Component {
       places: [],
     };
   }
+
+  sendUserInfo = (str) => {
+    this.props.grabUserLocation(str);
+  }
+
   // Function for finding user's location
   findCoordinates = () => {
     Geolocation.getCurrentPosition(
@@ -28,6 +33,7 @@ class GetLocation extends React.Component {
           latitude: latitude,
           longitude: longitude,
         });
+        this.sendUserInfo(latitude + ',' + longitude);
       },
       error => {
         Alert.alert(error.message);

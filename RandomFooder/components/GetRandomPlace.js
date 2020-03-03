@@ -47,6 +47,11 @@ class GetRandomPlace extends React.Component {
           imageUrl: response.data.businesses[random].image_url,
           url: response.data.businesses[random].url,
           coordinates: response.data.businesses[random].coordinates,
+          latitude: response.data.businesses[random].coordinates.latitude,
+          longitude: response.data.businesses[random].coordinates.longitude,
+          locationStr:
+            `${response.data.businesses[random].coordinates.latitude},` +
+            `${response.data.businesses[random].coordinates.longitude}`,
           price: response.data.businesses[random].price,
           address: response.data.businesses[random].location.address1,
           city: response.data.businesses[random].location.city,
