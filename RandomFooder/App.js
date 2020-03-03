@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import Header from './components/Header.js';
 import GetLocation from './components/GetLocation.js';
 import Display from './components/Display.js';
@@ -32,7 +32,6 @@ class App extends React.Component {
     this.setState({
       searchTerm: str,
     });
-    console.log('UPDATED SEARCH: ', str);
   };
 
   render() {

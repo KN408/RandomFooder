@@ -40,7 +40,12 @@ class Display extends React.Component {
           <View style={styles.titleContainer}>
             <PictureModal id={info.id} />
             <Text style={styles.title}>{name}</Text>
-            <Icon style={styles.rightIcon} name="share-square" size={30} color="black" />
+            <Icon
+              style={styles.rightIcon}
+              name="share-square"
+              size={30}
+              color="black"
+            />
           </View>
         </View>
         <View style={styles.infoBlock}>

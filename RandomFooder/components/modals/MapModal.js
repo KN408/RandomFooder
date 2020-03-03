@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import { Modal, ScrollView, TouchableHighlight, View, Alert, StyleSheet, Text, Image } from 'react-native';
+import React, { Component } from 'react';
+import { Modal, TouchableHighlight, View, Alert, StyleSheet, Image } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import axios from 'axios';
 import { key } from '../../Private/key.js';
@@ -43,7 +43,7 @@ class MapModal extends Component {
         <Modal
           animationType="slide"
           style={styles.modalStyle}
-          transparent={ false }
+          transparent={false}
           visible={this.state.modalVisible}
           onRequestClose={() => {
             Alert.alert('Modal has been closed.');
@@ -55,9 +55,14 @@ class MapModal extends Component {
                   this.setModalVisible(!this.state.modalVisible);
                   this.getMapImg();
                 }}>
-                <Icon style={styles.icon} name="times-circle" size={35} color="black" />
+                <Icon
+                  style={styles.icon}
+                  name="times-circle"
+                  size={35}
+                  color="black"
+                />
               </TouchableHighlight>
-              <Image style={styles.image} source={{uri: this.state.url}} />
+              <Image style={styles.image} source={{ uri: this.state.url }} />
             </View>
           </View>
         </Modal>

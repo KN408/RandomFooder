@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Alert } from 'react-native';
+import { View, StyleSheet, Alert } from 'react-native';
 import Geolocation from '@react-native-community/geolocation';
 import GetRandomPlace from './GetRandomPlace.js';
 
