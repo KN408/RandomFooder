@@ -11,11 +11,15 @@ class Footer extends React.Component {
     super(props);
   }
 
+  sendNewSearch = (str) => {
+    this.props.updateSearchTerm(str);
+  }
+
   render() {
     return (
       <View style={styles.footer}>
         <View style={styles.iconBox}>
-          <FilterModal />
+          <FilterModal updateSearchTerm={this.sendNewSearch} />
         </View>
         <View style={styles.iconBox}>
           <Icon name="heart" size={35} color="white" />

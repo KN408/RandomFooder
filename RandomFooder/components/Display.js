@@ -9,7 +9,7 @@ class Display extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      uri: 'https://via.placeholder.com/250',
+      uri: 'https://i.picsum.photos/id/429/300/300.jpg',
       photos: [],
     };
   }

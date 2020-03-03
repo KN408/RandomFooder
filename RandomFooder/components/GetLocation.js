@@ -57,6 +57,7 @@ class GetLocation extends React.Component {
           latitude={this.state.latitude}
           longitude={this.state.longitude}
           grabInfo={this.props.grabInfo}
+          searchTerm={this.props.searchTerm}
         />
       </View>
     );

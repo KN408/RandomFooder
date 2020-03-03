@@ -31,7 +31,7 @@ class GetRandomPlace extends React.Component {
     axios
       .get('https://api.yelp.com/v3/businesses/search', {
         params: {
-          term: this.state.searchTerm,
+          term: this.props.searchTerm,
           latitude: this.props.latitude,
           longitude: this.props.longitude,
           limit: 11,

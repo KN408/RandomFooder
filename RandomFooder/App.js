@@ -28,6 +28,13 @@ class App extends React.Component {
     });
   };
 
+  updateSearchTerm = (str) => {
+    this.setState({
+      searchTerm: str,
+    });
+    console.log('UPDATED SEARCH: ', str);
+  };
+
   render() {
     return (
       <View style={styles.container}>
@@ -43,6 +50,7 @@ class App extends React.Component {
           eatLocation={this.state.grabbedInfo.locationStr}
           style={styles.footer}
           userLocation={this.state.userLocation}
+          updateSearchTerm={this.updateSearchTerm}
         />
       </View>
     );
